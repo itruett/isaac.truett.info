@@ -4,8 +4,16 @@ description: A detailed guide for creating a simple website using GitHub Pages a
 layout: default
 categories: guide
 permalink: how/to/create-a-website-on-github-pages
+values: [simple, quick, free]
 ---
 <main>
-	<p>Coming Soon</p>
+	<header>
+		<h2>{{ page.title }}</h2>
+		<ul class=values>
+{% for value in page.values %}
+			<li>{{ value }}</li>
+{% endfor %}
+		</ul>
+	</header>
 </main>
 
