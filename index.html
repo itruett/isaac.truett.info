@@ -2,9 +2,14 @@
 title: Isaac Truett
 description: Personal website for Isaac Truett, Software Engineer
 layout: default
-permalink: index.html
+permalink: 
 ---
 <main>
-	<p>isaac.truett.info coming soon</p>
+{% for post in site.posts %}	
+	<dl class=post-list>
+		<dt><a href="{{ post.url }}">{{ post.title }}</a></dt>
+		<dd><span class=post-date>{{ post.date | date: "%Y-%m-%e" }}</span> {{ post.description }}</dd>
+	</dl>
+{% endfor %}
 </main>
 
