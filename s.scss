@@ -9,10 +9,13 @@ $accent-color: #c9daec;
 
 $main-column-max-width: 60em;
 
+$about-bg-image: url({% link images/bg.jpg %});
+
 @import 'reset';
 @import 'nav';
 @import 'posts';
 @import 'guides';
+@import 'about';
 
 .content {
 	background-color: $primary-bg-color;

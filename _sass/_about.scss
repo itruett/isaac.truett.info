@@ -1,0 +1,30 @@
+.about {
+	background-image: $about-bg-image;
+	background-size: cover;
+	height: 333px;
+	width: 600px;
+	margin: auto;
+}
+.headshot {
+	float: left;
+}
+.headshot, .about h2, .about h3 {
+	display: inline-block;
+	vertical-align: top;
+	margin: 10px;
+}
+.about h2 {
+	font-size: 50pt;
+}
+.about h3 {
+	font-size: 30pt;
+	color: #444;
+	margin-top: -20px;
+}
+.headshot img {
+	border-radius: 50%;
+}
+.headshot, .headshot img {
+	height: 150px;
+	width: 150px;
+}
