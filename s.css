@@ -22,14 +22,12 @@ h2, main>section:first-child>h3 {
 }
 main>section {
 	width: auto;
-	min-width: 300px;
 }
 dt {
 	font-weight: bold;
 }
 dl {
 	margin: 0;
-	min-width: 300px;
 }
 dd {
 	margin-bottom: 0.5em;
@@ -118,7 +116,6 @@ ul.values li {
 
 details {
 	padding: .5em .5em 0;
-	min-width: 150px;
 	margin: .5em 40px 0;
 	background-color: #fff;
 }
