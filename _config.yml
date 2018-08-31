@@ -1,2 +1,15 @@
 permalink: /:year/:month/:day/:title
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+encoding: utf-8
+github: [metadata]
+repository: itruett/isaac.truett.info
+social:
+  name: Isaac Truett
+  links:
+    - https://plus.google.com/+IsaacTruett
+    - https://www.linkedin.com/in/isaac-truett/
+    - https://github.com/itruett/
+    - https://stackoverflow.com/users/374293/isaac-truett
 
