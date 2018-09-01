@@ -30,7 +30,7 @@ dl {
 	margin: 0;
 }
 dd {
-	margin-bottom: 0.5em;
+	margin: 0 1em .5em 1em;
 }
 p, dd, li {
 	max-width: 60em;
@@ -116,7 +116,7 @@ ul.values li {
 
 details {
 	padding: .5em .5em 0;
-	margin: .5em 40px 0;
+	margin: .5em 0 0;
 	background-color: #fff;
 }
 details button {

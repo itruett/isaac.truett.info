@@ -127,18 +127,26 @@ $ git push origin master
 		</dl>
 	</section>
 	<hr />
-	<h4>Optional steps for buying and using a custom domain (coming soon)</h4>
+	<h4>Optional steps for buying and using a custom domain</h4>
 	<section>
 		<dl>
 			<dt><h3>4. Buy a domain</h3></dt>
 			<dd>
 				<details>
 					<summary>How</summary>
-					<p>Detailed description goes here.</p>
+					<ul>
+						<li>Go to <a href="https://domains.google.com/m/registrar/search">Google Domains</a> and search for the domain name that you want.</li>
+						<li>Add the domain to your cart</li>
+						<li>Checkout, filling in your contact and payment information.</li>
+						<li>
+							It's a good idea to turn on privacy protection for a personal domain, to avoid having your name and home address published in searchable databases.<br/>
+							<img src={% link images/google-domains-checkout.png %} alt=''>
+						</li>
+					</ul>
 				</details>
 				<details>
 					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
+					<p>There are many domain registrars you can choose to buy from. I chose Google Domains because I consider them to be trustworthy in this area, it was easy, and they supported a convenient payment method.</p>
 				</details>
 			</dd>
 		</dl>
@@ -149,11 +157,19 @@ $ git push origin master
 			<dd>
 				<details>
 					<summary>How</summary>
-					<p>Detailed description goes here.</p>
+					<p>From your list of shiny new domains, click the DNS icon:</p>
+					<img src={% link images/google-domains-dns.png %} alt=''>
+					<p>Scroll down to "Custom resource records" and add two:</p>
+					<ol>
+						<li>An "A" record named "@" listing the <a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider">GitHub Pages IP Addresses</a></li>
+						<li>A CNAME record with a subdomain to use for your website pointing to YourGitHubAccountName.github.io.</li> 
+					</ol>
+					<img src={% link images/google-domains-dns-records.png %} alt=''>
 				</details>
 				<details>
 					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
+					<p>The A record points your domain to the IP addresses of webservers owned by GitHub that serve Pages. Multiple IP addresses provides redundancy.</p>
+					<p>The CNAME record is like an alias for another name, in this case the name of your GitHub Pages account subdomain.
 				</details>
 			</dd>
 		</dl>
@@ -164,11 +180,17 @@ $ git push origin master
 			<dd>
 				<details>
 					<summary>How</summary>
-					<p>Detailed description goes here.</p>
+					<p>Create a CNAME file in the root of your project. The file contains the domain you set up for your website.</p>
+{% highlight bash %}
+$ echo "isaac.truett.info" >> CNAME
+$ git add CNAME
+$ git commit -m "Added CNAME file."
+$ git push origin master
+{% endhighlight %}
 				</details>
 				<details>
 					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
+					<p>You can actually do this from the GitHub settings page by putting your domain name into the custom domain field. I was fiddling with that and found that every change I made was committing a change to my repository. I don't like to have a series of commits that just tweak one little setting around, so I made the version I wanted locally and did a force push to overwrite the changes made from the website. Don't do this at home, kids. Overwriting history is the dark side of the force.</p>
 				</details>
 			</dd>
 		</dl>
