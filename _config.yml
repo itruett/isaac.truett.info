@@ -12,4 +12,5 @@ social:
     - https://www.linkedin.com/in/isaac-truett/
     - https://github.com/itruett/
     - https://stackoverflow.com/users/374293/isaac-truett
-
+sass:
+    style: compressed
