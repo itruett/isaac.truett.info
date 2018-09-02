@@ -75,7 +75,7 @@ $ git push origin master
 					<dd>This tells git that I want to add README.md to the repository.</dd>
 					<dt><code>git commit -m "Hello, world."</code></dt>
 					<dd>This commits all of my changes (in this case, just the README.md file) to the repository.</dd>
-					<dt><code>git remote add origin git@github.com:itruett/isaac.truett.info.git</code></dt>
+					<dt><code>git remote add origin ...</code></dt>
 					<dd>This tells git the location of my GitHub repository. You can work with multiple remote repositories, pushing and pull changes to them as you choose. I called my GitHub repo "origin" because that's the conventional name for the remote repo where your code officially "lives."</dd>
 					<dt><code>git push origin master</code></dt>
 					<dd>This push command sends the commit I just made to the "master" branch the remote repository called "origin."</dd>
@@ -143,7 +143,7 @@ $ git push origin master
 				<p>Scroll down to "Custom resource records" and add two:</p>
 				<ol>
 					<li>An "A" record named "@" listing the <a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider">GitHub Pages IP Addresses</a></li>
-					<li>A CNAME record with a subdomain to use for your website pointing to YourGitHubAccountName.github.io.</li> 
+					<li>A CNAME record with a subdomain to use for your website pointing to you.github.io where "you" is your GitHub account name.</li>
 				</ol>
 				<img src={% link images/google-domains-dns-records.png %} alt=''>
 			</details>
