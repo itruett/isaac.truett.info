@@ -17,6 +17,9 @@ html, body {
 	height: 100%;
 	background-color: $accent-color;
 }
+img {
+	max-width: 100%;
+}
 .content {
 	background-color: $primary-bg-color;
 	padding: .1px .5em;
