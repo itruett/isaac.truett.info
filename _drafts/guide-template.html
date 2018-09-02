@@ -1,142 +1,122 @@
 ---
 title: 
 description: 
-layout: default
+layout: guide
 categories: guide
 permalink: how/to/
 values: []
 draft: true
 sitemap: false
 ---
-<main>
-	<header>
-		<h2>{{ page.title }}</h2>
-		<ul class=values>
-{% for value in page.values %}
-			<li>{{ value }}</li>
-{% endfor %}
-		</ul>
-		<em>Blogged about in: </em>
-		<ul class=posts>
-{% for post in site.posts %}
-	{% for reference in post.referenced_guides %}
-		{% if reference == page.url %}
-		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
-		{% endif %}
-	{% endfor %}
-{% endfor %}
-		</ul>
-	</header>
-	{% include no-js.html %}
-	<section>
-		<p>This guide will explain how to ...</p>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 1</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 2</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 3</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 4</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 5</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 6</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>Step 7</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Detailed description goes here.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>Values and reasoning go here.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		Wrap it up.
-	</section>
-</main>
+
+<section>
+	<p>This guide will explain how to ...</p>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 1</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 2</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 3</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 4</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 5</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 6</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Step 7</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Detailed description goes here.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Values and reasoning go here.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	Wrap it up.
+</section>

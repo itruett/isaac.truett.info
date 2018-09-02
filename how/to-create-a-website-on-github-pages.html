@@ -1,74 +1,54 @@
 ---
 title: How to Create a Website on GitHub Pages 
 description: A detailed guide for creating a simple website using GitHub Pages and Google Domains
-layout: default
+layout: guide
 categories: guide
 permalink: how/to/create-a-website-on-github-pages
 values: [simple, quick, free]
 ---
-<main>
-	<header>
-		<h2>{{ page.title }}</h2>
-		<ul class=values>
-{% for value in page.values %}
-			<li>{{ value }}</li>
-{% endfor %}
-		</ul>
-		<em>Blogged about in: </em>
-		<ul class=posts>
-{% for post in site.posts %}
-	{% for reference in post.referenced_guides %}
-		{% if reference == page.url %}
-		<li><a href="{{ post.url }}">{{ post.title }}</a></li>
-		{% endif %}
-	{% endfor %}
-{% endfor %}
-		</ul>
-	</header>
-	{% include no-js.html %}
-	<section>
-		<p>This guide will explain how to set up a simple website hosted by GitHub Pages. The guide assumes that you have a GitHub account and that you have Git and a bash shell installed.</p>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>1. Create a project on GitHub</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>First, go to github.com and click the big "Start a project" button:</p>
-					<img src={% link images/github-start-project.png %} alt='' />
-					<p>Next, give it a name. I used the domain name I was planning to use for my site, isaac.truett.info.</p>
-					<p>Finally, click the "Create repository" button at the bottom of the form:</p>
-					<img src={% link images/github-create-repository.png %} alt='' />
-				</details>
-				<details>
-					<summary>Why</summary>
-					<dl>
-						<dt>Why are we creating a project on GitHub?</dt>
-						<dd>
-							<p>Two main reasons:</p>
-							<ol>
-								<li>You can have one GitHub Pages website for each account, organization, or project. I wanted to host my website on a custom domain, so it made more sense to me to use a project site named after the domain I was going to use.</li>
-								<li>It gives us a place to store the source code for our website. I could store the source somewhere else and only push the finished HTML into GitHub, but that is more work. Keeping it all on GitHub is quick and simple and free.</li>
-							</ol>
-						</dd>
-						<dt>Why did I choose GitHub?</dt>
-						<dd>
-							<p>I have experience with GitHub, and I wanted to try out GitHub Pages, which I had never used before. Also, it's free as long as the repository is public. Since I'm building a public website with no server-side processing, I didn't see much point in trying to keep the source code private.</p>
-						</dd>
-					</dl>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>2. Initialize the new repository with a README.md file</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Launch git-bash or a similar terminal and execute the following commands, substituting your GitHub username and site information.</p>
-					{% highlight bash %}
+<section>
+	<p>This guide will explain how to set up a simple website hosted by GitHub Pages. The guide assumes that you have a GitHub account and that you have Git and a bash shell installed.</p>
+</section>
+<section>
+	<dl>
+		<dt><h3>1. Create a project on GitHub</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>First, go to github.com and click the big "Start a project" button:</p>
+				<img src={% link images/github-start-project.png %} alt='' />
+				<p>Next, give it a name. I used the domain name I was planning to use for my site, isaac.truett.info.</p>
+				<p>Finally, click the "Create repository" button at the bottom of the form:</p>
+				<img src={% link images/github-create-repository.png %} alt='' />
+			</details>
+			<details>
+				<summary>Why</summary>
+				<dl>
+					<dt>Why are we creating a project on GitHub?</dt>
+					<dd>
+						<p>Two main reasons:</p>
+						<ol>
+							<li>You can have one GitHub Pages website for each account, organization, or project. I wanted to host my website on a custom domain, so it made more sense to me to use a project site named after the domain I was going to use.</li>
+							<li>It gives us a place to store the source code for our website. I could store the source somewhere else and only push the finished HTML into GitHub, but that is more work. Keeping it all on GitHub is quick and simple and free.</li>
+						</ol>
+					</dd>
+					<dt>Why did I choose GitHub?</dt>
+					<dd>
+						<p>I have experience with GitHub, and I wanted to try out GitHub Pages, which I had never used before. Also, it's free as long as the repository is public. Since I'm building a public website with no server-side processing, I didn't see much point in trying to keep the source code private.</p>
+					</dd>
+				</dl>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>2. Initialize the new repository with a README.md file</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Launch git-bash or a similar terminal and execute the following commands, substituting your GitHub username and site information.</p>
+{% highlight bash %}
 $ cd /c/dev/git
 $ mkdir isaac.truett.info
 $ cd isaac.truett.info/
@@ -79,123 +59,123 @@ $ git commit -m "Hello, world."
 $ git remote add origin git@github.com:itruett/isaac.truett.info.git
 $ git push origin master
 {% endhighlight %}
-					<p>So what does all this do?</p>
-					<dl>
-						<dt><code>cd /c/dev/git</code></dt>
-						<dd>This command changes to the C:\dev\git directory, where I keep my local Git repositories.</dd>
-						<dt><code>mkdir isaac.truett.info</code></dt>
-						<dd>Make a new directory to craft my website in. I named it after my domain.</dd>
-						<dt><code>cd isaac.truett.info/</code></dt>
-						<dd>Change into the new directory.</dd>
-						<dt><code>git init</code></dt>
-						<dd>Creates .git directory where information about my new repository will be kept.</dd>
-						<dt><code>echo "# isaac.truett.info" >> README.md</code></dt>
-						<dd>echo prints back the text that follows it, and '>>' redirects that output into a file, README.md.</dd>
-						<dt><code>git add README.md</code></dt>
-						<dd>This tells git that I want to add README.md to the repository.</dd>
-						<dt><code>git commit -m "Hello, world."</code></dt>
-						<dd>This commits all of my changes (in this case, just the README.md file) to the repository.</dd>
-						<dt><code>git remote add origin git@github.com:itruett/isaac.truett.info.git</code></dt>
-						<dd>This tells git the location of my GitHub repository. You can work with multiple remote repositories, pushing and pull changes to them as you choose. I called my GitHub repo "origin" because that's the conventional name for the remote repo where your code officially "lives."</dd>
-						<dt><code>git push origin master</code></dt>
-						<dd>This push command sends the commit I just made to the "master" branch the remote repository called "origin."</dd>
-					</dl>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>I chose to use the command line to initialize my repository because that is how I typically interact with a Git repository. You could use an IDE, or just check the "Initialize this repository with a README" option on the repository creation page.</p>
-					<p>For a more detailed look at the Git commands here, and many more, check out my <a href="{% link how/to-use-git.html %}">Guide to Using Git</a>.
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>3. Enable GitHub Pages</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Go to your GitHub project's settings page (e.g., https://github.com/itruett/isaac.truett.info/settings).</p>
-					<img src={% link images/github-pages-settings.png %} alt='' />
-					<p>Select "master branch" as the source of your pages, and click Save.</p>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>I chose to serve my pages out of the master branch directly because this repository's sole purpose is the website. If I were making an Open Source library or utility and building a website for that, then using a /docs folder would make sense.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<hr />
+				<p>So what does all this do?</p>
+				<dl>
+					<dt><code>cd /c/dev/git</code></dt>
+					<dd>This command changes to the C:\dev\git directory, where I keep my local Git repositories.</dd>
+					<dt><code>mkdir isaac.truett.info</code></dt>
+					<dd>Make a new directory to craft my website in. I named it after my domain.</dd>
+					<dt><code>cd isaac.truett.info/</code></dt>
+					<dd>Change into the new directory.</dd>
+					<dt><code>git init</code></dt>
+					<dd>Creates .git directory where information about my new repository will be kept.</dd>
+					<dt><code>echo "# isaac.truett.info" >> README.md</code></dt>
+					<dd>echo prints back the text that follows it, and '>>' redirects that output into a file, README.md.</dd>
+					<dt><code>git add README.md</code></dt>
+					<dd>This tells git that I want to add README.md to the repository.</dd>
+					<dt><code>git commit -m "Hello, world."</code></dt>
+					<dd>This commits all of my changes (in this case, just the README.md file) to the repository.</dd>
+					<dt><code>git remote add origin git@github.com:itruett/isaac.truett.info.git</code></dt>
+					<dd>This tells git the location of my GitHub repository. You can work with multiple remote repositories, pushing and pull changes to them as you choose. I called my GitHub repo "origin" because that's the conventional name for the remote repo where your code officially "lives."</dd>
+					<dt><code>git push origin master</code></dt>
+					<dd>This push command sends the commit I just made to the "master" branch the remote repository called "origin."</dd>
+				</dl>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>I chose to use the command line to initialize my repository because that is how I typically interact with a Git repository. You could use an IDE, or just check the "Initialize this repository with a README" option on the repository creation page.</p>
+				<p>For a more detailed look at the Git commands here, and many more, check out my <a href="{% link how/to-use-git.html %}">Guide to Using Git</a>.
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>3. Enable GitHub Pages</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Go to your GitHub project's settings page (e.g., https://github.com/itruett/isaac.truett.info/settings).</p>
+				<img src={% link images/github-pages-settings.png %} alt='' />
+				<p>Select "master branch" as the source of your pages, and click Save.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>I chose to serve my pages out of the master branch directly because this repository's sole purpose is the website. If I were making an Open Source library or utility and building a website for that, then using a /docs folder would make sense.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<div class=>
+</div>
+<section>
 	<h4>Optional steps for buying and using a custom domain</h4>
-	<section>
-		<dl>
-			<dt><h3>4. Buy a domain</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<ul>
-						<li>Go to <a href="https://domains.google.com/m/registrar/search">Google Domains</a> and search for the domain name that you want.</li>
-						<li>Add the domain to your cart</li>
-						<li>Checkout, filling in your contact and payment information.</li>
-						<li>
-							It's a good idea to turn on privacy protection for a personal domain, to avoid having your name and home address published in searchable databases.<br/>
-							<img src={% link images/google-domains-checkout.png %} alt=''>
-						</li>
-					</ul>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>There are many domain registrars you can choose to buy from. I chose Google Domains because I consider them to be trustworthy in this area, it was easy, and they supported a convenient payment method.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>5. Set up DNS</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>From your list of shiny new domains, click the DNS icon:</p>
-					<img src={% link images/google-domains-dns.png %} alt=''>
-					<p>Scroll down to "Custom resource records" and add two:</p>
-					<ol>
-						<li>An "A" record named "@" listing the <a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider">GitHub Pages IP Addresses</a></li>
-						<li>A CNAME record with a subdomain to use for your website pointing to YourGitHubAccountName.github.io.</li> 
-					</ol>
-					<img src={% link images/google-domains-dns-records.png %} alt=''>
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>The A record points your domain to the IP addresses of webservers owned by GitHub that serve Pages. Multiple IP addresses provides redundancy.</p>
-					<p>The CNAME record is like an alias for another name, in this case the name of your GitHub Pages account subdomain.
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<dl>
-			<dt><h3>6. Add CNAME to file to repository</h3></dt>
-			<dd>
-				<details>
-					<summary>How</summary>
-					<p>Create a CNAME file in the root of your project. The file contains the domain you set up for your website.</p>
+	<dl>
+		<dt><h3>4. Buy a domain</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<ul>
+					<li>Go to <a href="https://domains.google.com/m/registrar/search">Google Domains</a> and search for the domain name that you want.</li>
+					<li>Add the domain to your cart</li>
+					<li>Checkout, filling in your contact and payment information.</li>
+					<li>
+						It's a good idea to turn on privacy protection for a personal domain, to avoid having your name and home address published in searchable databases.<br/>
+						<img src={% link images/google-domains-checkout.png %} alt=''>
+					</li>
+				</ul>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>There are many domain registrars you can choose to buy from. I chose Google Domains because I consider them to be trustworthy in this area, it was easy, and they supported a convenient payment method.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>5. Set up DNS</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>From your list of shiny new domains, click the DNS icon:</p>
+				<img src={% link images/google-domains-dns.png %} alt=''>
+				<p>Scroll down to "Custom resource records" and add two:</p>
+				<ol>
+					<li>An "A" record named "@" listing the <a href="https://help.github.com/articles/setting-up-an-apex-domain/#configuring-a-records-with-your-dns-provider">GitHub Pages IP Addresses</a></li>
+					<li>A CNAME record with a subdomain to use for your website pointing to YourGitHubAccountName.github.io.</li> 
+				</ol>
+				<img src={% link images/google-domains-dns-records.png %} alt=''>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>The A record points your domain to the IP addresses of webservers owned by GitHub that serve Pages. Multiple IP addresses provides redundancy.</p>
+				<p>The CNAME record is like an alias for another name, in this case the name of your GitHub Pages account subdomain.
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>6. Add CNAME to file to repository</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Create a CNAME file in the root of your project. The file contains the domain you set up for your website.</p>
 {% highlight bash %}
 $ echo "isaac.truett.info" >> CNAME
 $ git add CNAME
 $ git commit -m "Added CNAME file."
 $ git push origin master
 {% endhighlight %}
-				</details>
-				<details>
-					<summary>Why</summary>
-					<p>You can actually do this from the GitHub settings page by putting your domain name into the custom domain field. I was fiddling with that and found that every change I made was committing a change to my repository. I don't like to have a series of commits that just tweak one little setting around, so I made the version I wanted locally and did a force push to overwrite the changes made from the website. Don't do this at home, kids. Overwriting history is the dark side of the force.</p>
-				</details>
-			</dd>
-		</dl>
-	</section>
-	<section>
-		<p>At this point you should be able to add HTML pages to your repository and they will show up as pages on your site. You can also add CSS, JS, images, and other files. When you're ready to take the next step, you can explore layouts and includes to reduce duplication.</p>
-	</section>
-</main>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>You can actually do this from the GitHub settings page by putting your domain name into the custom domain field. I was fiddling with that and found that every change I made was committing a change to my repository. I don't like to have a series of commits that just tweak one little setting around, so I made the version I wanted locally and did a force push to overwrite the changes made from the website. Don't do this at home, kids. Overwriting history is the dark side of the force.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<p>At this point you should be able to add HTML pages to your repository and they will show up as pages on your site. You can also add CSS, JS, images, and other files. When you're ready to take the next step, you can explore layouts and includes to reduce duplication.</p>
+</section>
