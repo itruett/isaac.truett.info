@@ -1,0 +1,71 @@
+/*
+ * Sets base styles for HTML elements
+ */
+
+/* Remove padding and margin from everything */
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	font-family: 'IBM Plex Sans Condensed', sans-serif;
+	width: 100%;
+	height: 100%;
+	background-color: $accent-color;
+}
+/* Block elements control margins and max width */
+header, main, section, footer, div, ol, ul, dl, li, dd, dt, p {
+	max-width: $main-column-max-width;
+}
+/* Prevent images from extending past their container */
+img {
+	max-width: 100%;
+}
+/* Add spacing between paragraphs and other block containers */
+p, header, main, section, footer {
+	margin: 1em 0;
+}
+/* Styles horizontal rules */
+hr {
+	border: 1px solid $accent-color;
+}
+/* Style the h1 link */
+h1 a {
+	text-decoration: none;
+	color: $primary-fg-color;
+}
+h1 span {
+	color: $secondary-fg-color;
+}
+h1 {
+	margin: .5em 0;
+}
+h2 {
+	margin: .5em 0;
+}
+h3 {
+	margin: .25em 0;
+}
+/* Add margins to lists */
+ol, ul, dl {
+	padding-left: 1em;
+}
+li {
+	margin-left: .5em;
+}
+/* Add margins to definition description */
+dd {
+	margin: 0 1em .5em 1em;
+}
+
+code {
+	font-family: 'IBM Plex Mono', monospace;
+}
+
+noscript {
+	font-style: italic;
+    border: 1px solid red;
+    display: inline-block;
+    padding: .5em;
+    margin: .5em;
+}

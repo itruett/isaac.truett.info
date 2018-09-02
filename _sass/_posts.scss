@@ -1,0 +1,19 @@
+.post-list {
+	.post-date {
+		color: $secondary-fg-color;
+	}
+	dd {
+		font-size: small;
+		font-style: italic;
+	}
+}
+.post-date {
+	font-weight: normal;
+	font-style: italic;
+}
+figure {
+	margin: 0 16px 0 0;
+	overflow-x: auto;
+	background-color: $secondary-bg-color;
+	padding-left: .5em;
+}

@@ -1,0 +1,49 @@
+%list-menu {
+	list-style-type: none;
+	padding: 0;
+	margin: .5em 0;
+}
+
+%list-menu-item {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+nav {
+	ul {
+		@extend %list-menu;
+	}
+}
+
+footer {
+	ul {
+		@extend %list-menu;
+	}
+}
+
+ul.values {
+	@extend %list-menu;
+}
+
+ul.posts {
+	@extend %list-menu;
+}
+nav {
+	li,  {
+		@extend %list-menu-item;
+	}
+	ul {
+		margin-bottom: 0;
+		padding-bottom: .5em;
+	}
+}
+footer li, ul.values li, ul.posts li {
+	@extend %list-menu-item;
+}
+footer ul {
+	margin: 0;
+	padding-bottom: .5em;
+}
+ul.values li {
+	margin-right: 0.5em;
+}
