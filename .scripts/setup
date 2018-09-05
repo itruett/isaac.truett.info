@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+#
+# Installs ruby, jekyll, bundler, and their dependencies.
+
+_setup() {
+	sudo apt-get install ruby ruby-all-dev zlib1g-dev
+	sudo gem install jekyll bundler
+	bundle install
+}
+
+_setup "$@"
