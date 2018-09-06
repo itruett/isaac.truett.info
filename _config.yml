@@ -1,4 +1,5 @@
 permalink: /:year/:month/:day/:title
+exclude: [go, .scripts, README.md, .gitignore]
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
