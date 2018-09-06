@@ -4,7 +4,7 @@
 
 _serve() {
 	local IP=$(ip -f inet addr show eth0 | sed -n -e 's/^    inet \(.*\)\/.*$/\1/p')
-	bundle exec jekyll serve --host=$IP
+	bundle exec jekyll serve --host=$IP ${_GO_CMD_ARGV}
 }
 
 _serve "$@"
