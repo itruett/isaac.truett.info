@@ -1,0 +1,150 @@
+---
+title: How to Get Started with go-script-bash
+description: Make it easy to create scripts to perform routine operations with your project in a way that also serves as documentation for how your project works.
+layout: guide
+categories: guide
+permalink: how/to/go-script-bash
+values: [easy, repeatable, self-documenting]
+excerpt_separator: <!--more-->
+---
+<section>
+	<p>This guide will show you how to add <a href=https://github.com/mbland/go-script-bash>go-bash-script</a> to your project. Mike's documentation is already a great place to start. Hopefully this example is a useful addition.</p>
+</section>
+<!--more-->
+<section>
+	<dl>
+		<dt><h3>Copy the go-template into your project root</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+$ curl https://raw.githubusercontent.com/mbland/go-script-bash/master/go-template >./go
+$ chmod ugo+rx ./go
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>The curl command lets us quickly copy a single file out of GitHub, and the chmod command sets the write and execute permissions so we can run the script.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Edit the template to set a location for our scripts</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Edit the <code>go</code> file and change the line that declares <code>GO_SCRIPTS_DIR</code>:</p>
+{% highlight bash %}
+declare GO_SCRIPTS_DIR=.scripts
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>The scripts feel like configuration/metadata for my project, so I wanted to tuck them into a directory named with a leading dot.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Add <code>/.scripts/go-script-bash</code> to <code>.gitignore</code></h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Edit your <code>.gitignore</code> file (assuming you're using git) to prevent the go-script-bash framework from being added to your repository.</p>
+{% highlight gitignore %}
+/.scripts/go-script-bash
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Running the go command for the first time will download the go-script-bash framework from GitHub. You could check that in along with your code, or add it as a submodule as Mike explains in his documentation. I chose to let it download once every time I set up my project on a new computer. I feel that option keeps my repository the cleanest.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Define "go" as a function</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+$ ./go env | bash
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p><code>./go env</code> will print out a command to define the go script as a function that you can use from anywhere in your project. Piping that output into <code>bash</code> runs the command immediately.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Create your first go command script</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Use the <code>go new</code> command to create a new script file:</p>
+				{% highlight bash %}
+$ go new --command serve
+{% endhighlight %}
+				<p>Edit the new file (.scripts/serve) to do something useful:</p>
+{% highlight bash %}
+#! /usr/bin/env bash
+#
+# Starts the built-in Jekyll development server
+
+_serve() {
+        local IP=$(ip -f inet addr show eth0 | sed -n -e 's/^    inet \(.*\)\/.*$/\1/p')
+        bundle exec jekyll serve --host=$IP ${_GO_CMD_ARGV}
+}
+
+_serve "$@"
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>My <code>serve</code> command was getting a little unwieldly after I had to start specifying the IP address to bind to (I'll address that more when I get to writing about my experience with developing on a Pixelbook). This command uses <code>sed</code> to parse an IP address from the output of <code>ip</code> and then passes that on to Jekyll. <code>${_GO_CMD_ARGV}</code> lets me pass additional arguments, so I can do something like <code>go serve --drafts</code> to include draft posts when running my website locally.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>That was fun. Let's do another one!</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Use the <code>go new</code> command to create a new script file:</p>
+{% highlight bash %}
+$ go new --command setup
+{% endhighlight %}
+				<p>Edit the new file (.scripts/setup) to do something useful:</p>
+{% highlight bash %}
+#! /usr/bin/env bash
+#
+# Installs ruby, jekyll, bundler, and their dependencies.
+
+_setup() {
+        sudo apt-get install ruby ruby-all-dev zlib1g-dev
+        sudo gem install jekyll bundler
+        bundle install
+}
+
+_setup "$@"
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>This command should come in handy the next time I have to set up a new workspace for this project. It will install ruby, jekyll, bundler, and all the other dependencies needed to run my website.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	At this point I have some useful scripts that make it easy to do things like set up my project on a new computer, or start up the Jekyll server to preview my website. I'm sure I'll add more since the go-script-bash framework makes it easy to do.
+</section>
