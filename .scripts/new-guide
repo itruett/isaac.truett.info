@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+#
+# Creates a new guide by copying the template in _drafts
+
+_new-guide() {
+  cp ${_GO_ROOTDIR}/_drafts/guide-template.html ${_GO_ROOTDIR}/_drafts/${_GO_CMD_ARGV[0]}.html
+}
+
+_new-guide "$@"
