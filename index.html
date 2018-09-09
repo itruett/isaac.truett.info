@@ -6,10 +6,10 @@ permalink:
 ---
 <main>
 	<h2>Recent Posts</h2>
-{% for post in site.posts %}
 	<dl class=post-list>
-		<dt><a href="{{ post.url }}">{{ post.title }}</a></dt>
-		<dd><span class=post-date>{{ post.date | date: "%Y-%m-%d" }}</span> {{ post.description }}</dd>
-	</dl>
+{% for post in site.posts %}
+	<dt><a href="{{ post.url }}">{{ post.title }}</a></dt>
+	<dd><span class=post-date>{{ post.date | date: "%Y-%m-%d" }}</span> {{ post.description }}</dd>
 {% endfor %}
+	</dl>
 </main>
