@@ -36,3 +36,9 @@ summary {
 .guide-footer {
 	font-style: italic;
 }
+#open-all {
+	font-size: 75%;
+}
+details#open-all[open] summary {
+	border: none;
+}
