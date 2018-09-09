@@ -15,26 +15,28 @@ function enableGuideControls() {
 	}
 
 	var openAll = document.getElementById('open-all');
-	openAll.onclick = function(element) {
-		var details = document.getElementsByTagName('details');
+	if (openAll) {
+		openAll.onclick = function(element) {
+			var details = document.getElementsByTagName('details');
 
-		for (var i = 0; i < details.length; i++) {
-			if (details[i].id != 'open-all') {
-				if (openAll.open) {
-					details[i].removeAttribute('open');
-				} else {
-					details[i].setAttribute('open', true);
+			for (var i = 0; i < details.length; i++) {
+				if (details[i].id != 'open-all') {
+					if (openAll.open) {
+						details[i].removeAttribute('open');
+					} else {
+						details[i].setAttribute('open', true);
+					}
 				}
 			}
-		}
 
-		if (openAll.open) {
-			openAll.childNodes[0].innerHTML = 'Open all sections';
-		} else {
-			openAll.childNodes[0].innerHTML = 'Close all sections';
-		}
+			if (openAll.open) {
+				openAll.childNodes[0].innerHTML = 'Open all sections';
+			} else {
+				openAll.childNodes[0].innerHTML = 'Close all sections';
+			}
 
-		return true;
+			return true;
+		}
 	}
 }
 
