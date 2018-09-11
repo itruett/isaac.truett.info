@@ -14,6 +14,7 @@ layout: compress
 		</script>
 		<title>{{ page.title }}</title>
 		<link rel=icon href={% link images/me.png %}>
+		<meta charset=utf-8>
 		<meta name=Description content="{{ page.description }}">
 		<meta name=viewport content="width=device-width, initial-scale=1">
 		{% seo title=false %}
@@ -24,9 +25,9 @@ layout: compress
 	<body>
 		<section class="content">
 			{% include header.html %}
-	
+
 			{{ content }}
-	
+
 			{% include footer.html %}
 		</section>
 	</body>
