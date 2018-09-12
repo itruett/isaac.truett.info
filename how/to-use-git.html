@@ -10,7 +10,30 @@ draft: true
 sitemap: false
 ---
 <section>
-	<p>This guide will explain how to ...</p>
+	<p><em>My opinionated guide to using git for version control.</em></p>
+	<h3>Principles</h3>
+	<ol>
+		<li>
+			<strong>Developers are stewards of history</strong>
+			<ul><li>Keep the log clean; protect its integrity</li></ul>
+		</li>
+		<li><strong>What goes on Master, stays on Master</strong>
+			<ul><li>Never force push</li></ul>
+		</li>
+		<li><strong>Tags are like photographs; snapshots of a moment in time</strong>
+			<ul><li>Tag things you want to remember and remove them from HEAD &ndash; don’t leave them there “just in case” &ndash; it’ll last longer</li></ul>
+		<li><strong>Branches are short and sweet, like a limerick</strong>
+			<ul>
+				<li>… unless you maintain multiple versions of your product, in which case some of your branches are main-line for those versions</li>
+				<li>All other branches: git in, make your changes, and git out</li>
+			</ul>
+		<li><strong>Rebase is your friend</strong>
+			<ul>
+				<li>No merge commits</li>
+				<li>Fast-forward merging only</li>
+			</ul>
+		</li>
+	</ol>
 </section>
 <!--more-->
 <details id=open-all><summary>Open all sections</summary></details>
