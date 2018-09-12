@@ -6,6 +6,13 @@ plugins:
 encoding: utf-8
 github: [metadata]
 repository: itruett/isaac.truett.info
+author: Isaac Truett
+logo: images/me.png
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: images/me.png
 social:
   name: Isaac Truett
   links:
