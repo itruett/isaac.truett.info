@@ -1,0 +1,96 @@
+---
+title: How to Run Dwarf Fortress on Chrome OS
+description: Guide to installing and running the classic Linux game Dwarf Fortress on a Chrome OS Pixelbook
+layout: guide
+categories: guide
+permalink: how/to/run-dwarf-fortress
+values: [free, gaming, losing is fun]
+---
+<section>
+	<p>We're going to install and run the classic Linux game <a href=http://bay12games.com/dwarves/>Dwarf Fortress</a>. As of now (mid-September 2018) Linux apps on Chrome OS still don't have GPU acceleration, so the games won't be smooth and pretty, if they run at all. Fortunately for us, Dwarf Fortress isn't smooth and pretty anyway!</p>
+</section>
+<!--more-->
+<details id=open-all><summary>Open all sections</summary></details>
+<section>
+	<dl>
+		<dt><h3>Download a Starter Pack</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Go to the <a href=http://dffd.bay12games.com/file.php?id=13244>Dwarf Fortress File depot</a> and click the "Download Now" link. Save the file to <code>Linux files/Downloads</code>.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>We're going to use a starter pack here that includes the base game, plus a number of modifications that make the game more accessible. There are LOTs of options, so feel free to play around and explore. I'm going to get the game running in this guide. For an in-depth tutorial on playing the game, try <a target=_blank href=https://df-walkthrough.readthedocs.io/en/latest/>this walkthrough</a>.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Extract the game files</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+mkdir ~/Games
+cd ~/Games
+tar -xzvf ~/Downloads/LinuxLNP-0.44.12-r01.tar.gz
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Here we're making a Games directory and extracting the contents of the Starter Pack compressed file into it. You should now have a <code>~/Games/LinuxLNP-0.44.12-r01/</code> directory. The directory name contains the version of Dwarf Fortress, so your directory's version number might be higher if you're following this guide after a new version is released.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Install required libraries</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+sudo apt-get install libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libglu1-mesa
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Dwarf Fortress requires a few additional libraries that are not installed by default in the current version of Chrome OS Linux App support. I found <a target=_blank href=https://askubuntu.com/questions/226613/how-do-i-install-the-library-libsdl-image-1-2-so-0-required-to-run-dwarf-fortres>this Ask Ubuntu question</a> which helped me identify the necessary libraries to install.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Run the launcher</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+~/Games/LinuxLNP-0.44.12-r01/startlnp
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>This runs the Starter Pack launcher program, which lets you download graphic tilesets and change game settings before starting Dwarf Fortress itself. I found that the game had pretty severe input lag until I went to the Advanced tab and changed the Processor Priority to "REALTIME."</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Play Dwarf Fortress!</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+				<p>Click the big "Play Dwarf Fortress!" button at the bottom of the launcher window.</p>
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>Again, you'll probably want to explore the other options and customize the game to your preferred experience, but this should be enough to get you running.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
