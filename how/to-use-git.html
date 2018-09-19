@@ -34,91 +34,102 @@ sitemap: false
 			</ul>
 		</li>
 	</ol>
+	<p>This guide is still a work-in-progress. Check back later for more!</p>
 </section>
 <!--more-->
 <details id=open-all><summary>Open all sections</summary></details>
 <section>
 	<dl>
-		<dt><h3>Step 1</h3></dt>
+		<dt><h3>Start in the right place</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+{% highlight bash %}
+git checkout master
+git pull --rebase
+{% endhighlight %}
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p>This will make sure that you're on the master branch, that master is up-to-date, and that any stray commits you have lying around in your local repository's master branch are placed on top of the remote version of history, as is Good and Proper in the stewardship of your code's history.</p>
+{% highlight bash %}
+git config --global pull.rebase true
+{% endhighlight %}
+				<p>This config setting will make rebase the default behavior for <code>pull</code>, in case you forget to add the <code>--rebase</code> flag.</p>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
 	<dl>
-		<dt><h3>Step 2</h3></dt>
+		<dt><h3>Make a branch</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+				{% highlight bash %}git checkout -b {branch name}{% endhighlight %}
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p>Making changes on a separate branch helps  history stay clean by keeping all of your changes for a specific feature or bugfix together, giving you a place to amend or revert commits without leaving a trace in history, and finally submitting your changes for a review as part of a pull request process.</p>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
 	<dl>
-		<dt><h3>Step 3</h3></dt>
+		<dt><h3>Stage your changes for commiting</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+{% highlight bash %}
+git add one/path/at/a/time
+{% endhighlight %}
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p>A quick shortcut to recursively add all of the changes in the current directory is <code>git all .</code>, but, by adding files individually, you have a chance to be thoughtful and make a deliberate decision about whether each file belongs in the commit. It can be tempting to take all of the changes at once, but we often end up touching many files during the development process and making changes that are not required in the final solution. These changes may be good changes to make, but if they aren't required for the current issue you're working on, it's probably best to make a separate commit.</p>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
 	<dl>
-		<dt><h3>Step 4</h3></dt>
+		<dt><h3>Do a self-review</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+				{% highlight bash %}git diff --cached{% endhighlight %}
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p><code>diff</code> with the <code>--cached</code> will show you all of your staged (added), but not yet committed, changes. This is a good opportunity to review what you've done, and make sure that each line that changed is correct and appropriate to be committed at this time.</p>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
 	<dl>
-		<dt><h3>Step 5</h3></dt>
+		<dt><h3>Commit your changes</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+				{% highlight bash %}git commit{% endhighlight %}
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p>Be sure to add a thoughtful comment about the changes you are making. If you have a ticket tracking system, it can be very helpful to include a reference to the ticket you are working on at the start of the comment, like this:</p>
+				<code>[issue-123] Adds a third solo to correct for insufficient cowbell</code>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
 	<dl>
-		<dt><h3>Step 6</h3></dt>
+		<dt><h3>Add the one little change you missed</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+				{% highlight bash %}git commit --amend{% endhighlight %}
 			</details>
 			<details>
 				<summary>Why</summary>
