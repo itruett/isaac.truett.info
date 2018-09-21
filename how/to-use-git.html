@@ -1,13 +1,11 @@
 ---
 title: How to Use Git
-description: A guide to common git commands, what they do, and how I use them.
+description: A guide to common git commands, what they do, and how I use them
 layout: guide
 categories: guide
 permalink: how/to/use-git
 values: [command-line, know-your-tools]
 excerpt_separator: <!--more-->
-draft: true
-sitemap: false
 ---
 <section>
 	<p><em>My opinionated guide to using git for version control.</em></p>
@@ -17,7 +15,7 @@ sitemap: false
 			<strong>Developers are stewards of history</strong>
 			<ul><li>Keep the log clean; protect its integrity</li></ul>
 		</li>
-		<li><strong>What goes on Master, stays on Master</strong>
+		<li><strong>What goes on master stays on master</strong>
 			<ul><li>Never force push</li></ul>
 		</li>
 		<li><strong>Tags are like photographs; snapshots of a moment in time</strong>
@@ -34,7 +32,6 @@ sitemap: false
 			</ul>
 		</li>
 	</ol>
-	<p>This guide is still a work-in-progress. Check back later for more!</p>
 </section>
 <!--more-->
 <details id=open-all><summary>Open all sections</summary></details>
@@ -102,7 +99,7 @@ git add one/path/at/a/time
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p><code>diff</code> with the <code>--cached</code> will show you all of your staged (added), but not yet committed, changes. This is a good opportunity to review what you've done, and make sure that each line that changed is correct and appropriate to be committed at this time.</p>
+				<p><code>diff</code> with the <code>--cached</code> option will show you all of your staged (added), but not yet committed, changes. This is a good opportunity to review what you've done, and make sure that each line that changed is correct and appropriate to be committed at this time.</p>
 			</details>
 		</dd>
 	</dl>
@@ -133,26 +130,96 @@ git add one/path/at/a/time
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p>Sometimes, immediately after commiting changes, despite all the reviews, I do a <code>git status</code> and see a file I missed. Or I flip back to my editor and realize "Oh, if I change <em>this</em>, then I'm going to have to change <em>that</em> too." In these cases, there's no harm in modifying the commit I just made. I'll <code>add</code> the additonal changes and then use <code>--amend</code> to alter the previous commit, combining my staged but uncommitted changes with the changes in the previous commit. So if my last commit added two files and I have one more file staged, then the commit with two files is replaced by a commit with all three. In the commit history it now looks like I committed all three at once. My intent is clear, and the history reflects that intent. No need for a commit that just says "oops, I missed one."</p>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
 	<dl>
-		<dt><h3>Step 7</h3></dt>
+		<dt><h3>Catch up on changes in master</h3></dt>
 		<dd>
 			<details>
 				<summary>How</summary>
-				<p>TODO Detailed description goes here.</p>
+				<p>Make sure you have all of your changes committed, then:</p>
+{% highlight bash %}
+git checkout master
+git pull --rebase
+git checkout {branch}
+git rebase master
+{% endhighlight %}
+				<p>Resolve merge conflicts during the rebase, if any, and then you're all caught up with master.</p>
 			</details>
 			<details>
 				<summary>Why</summary>
-				<p>TODO Values and reasoning go here.</p>
+				<p>This process first takes you back to the master branch, pulls and updates your local master branch with any changes from origin, then switchs back to your branch and rebases, applying your changes on top of the new master history.</p>
 			</details>
 		</dd>
 	</dl>
 </section>
 <section>
-	<p>TODO Wrap it up.</p>
+	<dl>
+		<dt><h3>See everything you've changed compared with master</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+git diff master..{branch}
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>This is especially handy after you've rebased on top of a new master branch HEAD to do a sanity check before submitting changes for a peer review. My branch may contain a number of separate commits, and this lets me see the changes holisticly</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Recovering a lost commit</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+git reflog
+{% endhighlight %}
+				<p>Search the reflog for your missing commit. It helps if you remember the message, or date and time of the commit. When you think you've found it, check out that commit:</p>
+{% highlight bash %}
+git checkout {SHA1 hash}
+{% endhighlight %}
+				<p>Be careful! You are now "detached," meaning you are not at the HEAD of a branch. Commits made from here are not part of a branch. (Becoming detached is a common way of losing commits, in fact). Review the code at this point. If you've found your missing changes, then create a branch:</p>
+{% highlight bash %}
+git checkout -b {branch name}
+{% endhighlight %}
+				<p>Now you can continue working from your recovered commit, merge those changes into another branch, or just leave the branch as it is, safe in the knowledge that your changes were not permanently lost.
+				</details>
+			<details>
+				<summary>Why</summary>
+				<p>The reflog is similar to a branch's log. The commit log you get from <code>git log</code> shows the ancestry of the branch, the changes that incrementally brought it to this point. Instead of a sequential list of changes to files, the reflog shows the sequence of git commands that got you to the current state. The commit information (e.g., author, message, hash) is also there, and that's what helps us find our lost commits. We can narrow down the reflog further by piping the output into <code>grep</code> to filter it down to just the commits:</p>
+{% highlight bash %}
+git reflog | grep "commit:"
+{% endhighlight %}
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<dl>
+		<dt><h3>Share your changes</h3></dt>
+		<dd>
+			<details>
+				<summary>How</summary>
+{% highlight bash %}
+git push origin {branch}
+{% endhighlight %}
+			</details>
+			<details>
+				<summary>Why</summary>
+				<p>All of your commits happen in your local repository. To share changes with anyone else, they have to be <em>pushed</em> or <em>pulled</em> from one repository to another. The way this typically works is that each developer <em>pulls</em> from a shared remote repository, refered to as <em>origin</em>, and then <em>pushes</em> their changes back to origin where others can then pull them down.</p>
+			</details>
+		</dd>
+	</dl>
+</section>
+<section>
+	<p>Need to see it in pictures? You can see branching in action with this <a href=https://learngitbranching.js.org/>interactive visual tutorial</a>.
 </section>
