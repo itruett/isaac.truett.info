@@ -1,0 +1,18 @@
+---
+title: "Secret Project: Fellowship Community Platform"
+description: A super secret community platform called Fellowship developed by Isaac Truett
+layout: default
+permalink: 
+head: |
+  <meta name="google-signin-client_id" content="757704202963-udi016t84t9l9c3g0fkpjt58nvehp8a2.apps.googleusercontent.com">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+---
+<main>
+	<div class="g-signin2" data-onsuccess="onSignIn"></div>
+	<a href="#" onclick="signOut();">Sign out</a>
+	<form action="#" id="post-form" onsubmit="return false;">
+		<textarea id="textArea"></textarea>
+		<button>Post</button>
+	</form>
+	<div id="feed"></div>
+</main>
