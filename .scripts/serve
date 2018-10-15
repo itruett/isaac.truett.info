@@ -4,7 +4,10 @@
 
 _serve() {
 	local IP=$(ip -f inet addr show eth0 | sed -n -e 's/^    inet \(.*\)\/.*$/\1/p')
-	bundle exec jekyll serve --host=$IP ${_GO_CMD_ARGV}
+	if [ ! -f penguin.truett.info.crt ]; then
+		local SSL="--ssl-key ssl/penguin.truett.info.key --ssl-cert ssl/penguin.truett.info.crt"
+	fi
+	bundle exec jekyll serve --host=$IP $SSL ${_GO_CMD_ARGV}
 }
 
 _serve "$@"

@@ -1,0 +1,22 @@
+#! /usr/bin/env bash
+#
+# Generates a self-signed certificate for running the website locally over HTTPS
+
+_self-sign() {
+	if [ ! -f penguin.truett.info.crt ]; then
+		openssl req \
+			-x509 \
+			-out penguin.truett.info.crt \
+			-keyout penguin.truett.info.key \
+			-newkey rsa:2048 -nodes -sha256 \
+			-subj '/CN=penguin.truett.info' \
+			-extensions EXT \
+			-config <( \
+				printf "[dn]\nCN=penguin.truett.info\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:penguin.truett.info\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")
+		mkdir -p ${_GO_ROOTDIR}/ssl
+		mv penguin.truett.info.crt ${_GO_ROOTDIR}/ssl
+		mv penguin.truett.info.key ${_GO_ROOTDIR}/ssl
+	fi
+}
+
+_self-sign "$@"
