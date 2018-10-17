@@ -112,9 +112,36 @@ function getPosts() {
 	request.onreadystatechange = function() {
 		if (request.readyState == 4 && request.status == 200) {
 			var feed = document.getElementById("feed");
-			feed.innerHTML = request.responseText;
+
+			while (feed.lastChild) { feed.removeChild(feed.lastChild); }
+
+			var posts = JSON.parse(request.responseText);
+
+			for (var i = 0; i < posts.length; i++) {
+				var post = posts[i];
+
+				var userImage = document.createElement('img');
+				userImage.src = post.user.imageUrl;
+
+				var postDiv = document.createElement('div');
+				var date = new Date(post.date);
+
+				postDiv.innerHTML = formatDate(date) + " (" + post.user.name + "): " + post.text;
+
+				feed.appendChild(userImage);
+				feed.appendChild(postDiv);
+			}
 		}
 	};
 
 	request.send();
 }
+
+function formatDate(date) {
+	var year = date.getFullYear();
+	var month = new String(date.getMonth() + 1).padStart(2, '0');
+	var dayOfMonth = new String(date.getDate()).padStart(2, '0');
+	var hourOfDay = new String(date.getHours() + 1).padStart(2, '0');
+	var minuteOfHour = new String(date.getMinutes()).padStart(2, '0');
+
+	return year + "-" + month + "-" + dayOfMonth + " " + hourOfDay + ":" + minuteOfHour;F}
