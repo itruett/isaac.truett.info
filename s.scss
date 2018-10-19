@@ -16,6 +16,7 @@ $about-bg-image: url({% link images/bg.jpg %});
 @import 'posts';
 @import 'guides';
 @import 'about';
+@import 'fellowship';
 
 .content {
 	background-color: $primary-bg-color;

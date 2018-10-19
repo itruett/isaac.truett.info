@@ -1,0 +1,21 @@
+.userPost {
+	display: flex;
+	align-items: center;
+}
+
+.userPostContent {
+	max-width: $main-column-max-width;
+	padding: .5em;
+	display: inline-flex;
+	vertical-align: top;
+}
+
+.userImage {
+	height: 2em;
+	width: 2em;
+	border-radius: 50%;
+	display: inline-flex;
+	flex-direction: column;
+	justify-content: center;
+	vertical-align: middle;
+}

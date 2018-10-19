@@ -98,6 +98,8 @@ function initPostForm() {
 
 			return false;
 		});
+
+		getPosts();
 	}
 }
 
@@ -122,13 +124,19 @@ function getPosts() {
 
 				var userImage = document.createElement('img');
 				userImage.src = post.user.imageUrl;
+				userImage.className = "userImage";
 
-				var postDiv = document.createElement('div');
+				var contentDiv = document.createElement('div');
 				var date = new Date(post.date);
 
-				postDiv.innerHTML = formatDate(date) + " (" + post.user.name + "): " + post.text;
+				contentDiv.className = "userPostContent";
+				contentDiv.innerHTML = formatDate(date) + " (" + post.user.name + "): " + post.text;
 
-				feed.appendChild(userImage);
+				var postDiv = document.createElement('div');
+				postDiv.className = "userPost";
+				postDiv.appendChild(userImage);
+				postDiv.appendChild(contentDiv);
+
 				feed.appendChild(postDiv);
 			}
 		}
