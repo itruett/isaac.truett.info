@@ -3,6 +3,8 @@ exclude: [go, .scripts, README.md, .gitignore, ssl]
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+  - jekyll-feed
+excerpt_separator: "<!--excerpt-->"
 encoding: utf-8
 github: [metadata]
 repository: itruett/isaac.truett.info
