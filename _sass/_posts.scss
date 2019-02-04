@@ -17,3 +17,15 @@ figure {
 	background-color: $secondary-bg-color;
 	padding-left: .5em;
 }
+ol.gallery {
+    padding: 0 1em;
+    margin: 0;
+    display: flex;
+}
+ol.gallery li {
+	list-style-type: none;
+	margin: 0 .5em;
+}
+gallery img {
+	display: inline-block;
+}
