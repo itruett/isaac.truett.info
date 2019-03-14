@@ -6,11 +6,11 @@ permalink: about
 ---
 <main>
 	<h2>About Me</h2>
-	<section class=about>
+	<section class=about itemscope itemtype="https://schema.org/Person">
 		<div class=headshot>
-			<img src={% link images/me.png %} />
+			<img itemprop="image" src={% link images/me.png %} />
 		</div>
-		<h2>Isaac Truett</h2>
+		<h2><span itemprop="givenName">Isaac</span> <span itemprop="familyName">Truett</span></h2>
 		<h3>Software Engineer</h3>
 	</section>
 </main>
