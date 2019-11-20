@@ -20,8 +20,10 @@ layout: compress
 		<meta name=viewport content="width=device-width, initial-scale=1">
 		{% feed_meta %}
 		{% seo title=false %}
-		<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans+Condensed" rel="stylesheet">
-		<link rel=stylesheet href={% link s.scss %}>
+		<link rel="preload" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans+Condensed" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono|IBM+Plex+Sans+Condensed"></noscript>
+		<link rel="preload" href="{% link s.scss %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+		<noscript><link rel="stylesheet" href="{% link s.scss %}"></noscript>
 		<script async src={% link s.js %}></script>
 		{{ page.head }}
 	</head>
