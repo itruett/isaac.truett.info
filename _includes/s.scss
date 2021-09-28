@@ -1,6 +1,3 @@
----
-permalink: s.css
----
 $primary-fg-color: #000;
 $secondary-fg-color: #666;
 $primary-bg-color: #fff;
@@ -23,3 +20,9 @@ $about-bg-image: url({% link images/bg.jpg %});
 	margin: auto;
 	position: relative;
 }
+
+footer ul li {
+	min-height: 48px;
+	min-width: 48px;
+}
+
